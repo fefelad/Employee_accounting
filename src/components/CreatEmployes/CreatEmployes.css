@@ -1,0 +1,13 @@
+.CreatEmployes_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.CreatEmployes_title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 20px;
+}

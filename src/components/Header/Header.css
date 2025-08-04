@@ -1,0 +1,28 @@
+.header {
+  background-color: var(--backgroundColorBlue);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: white;
+}
+
+.header_title {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 36px;
+}
+
+.header_text_employes {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+.header_text_count_premia {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 24px;
+}

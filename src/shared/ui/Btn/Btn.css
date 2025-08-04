@@ -1,0 +1,11 @@
+.Btn {
+  background-color: var(--BtnColor);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.Btn:hover {
+  background-color: var(--BtnHover);
+  transition: 0.3s;
+}

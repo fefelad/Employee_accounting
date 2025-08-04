@@ -1,17 +1,3 @@
-#root {
-  --BodyColorWhite: #ffff;
-  --backgroundColorBlue: #3066ab;
-  --BtnColor: #d14545;
-  --BtnHover: #ff6b6b;
-
-  --font-primary: "Montserrat", sans-serif;
-  --font-secondary: "Roboto", sans-serif;
-}
-
-body {
-  background-color: gainsboro;
-}
-
 /* Reset and base styles  */
 * {
   padding: 0px;
