@@ -139,3 +139,7 @@ input[type="file"] {
   font-size: 28px;
   margin-bottom: 20px;
 }
+
+.Employes_list {
+  width: 500px;
+}

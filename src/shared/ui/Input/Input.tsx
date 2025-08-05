@@ -1,26 +1,23 @@
-import { memo, useState, type SetStateAction } from "react";
+import { memo } from "react";
 import "./Input.css";
 
 interface InputProps {
   placeholderText: string;
+  OnChange: (value: string) => void;
+  value: string;
 }
 
-function Input({ placeholderText }: InputProps) {
-  const [values, SetValue] = useState("");
-
-  const ValueInput = (event: { target: { value: SetStateAction<string> } }) => {
-    SetValue(event.target.value);
-    // console.log(event.target.value);
-  };
-
+function Input({ placeholderText, OnChange, value }: InputProps) {
   return (
-    <input
-      className="input_serch"
-      value={values}
-      onChange={ValueInput}
-      type="text"
-      placeholder={placeholderText}
-    />
+    <>
+      <input
+        className="input_serch"
+        type="text"
+        value={value}
+        onChange={(e) => OnChange(e.target.value)}
+        placeholder={placeholderText}
+      />
+    </>
   );
 }
 

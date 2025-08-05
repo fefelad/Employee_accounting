@@ -1,10 +1,18 @@
 import "./EmployesListPeople.css";
 
-function EmployesListPeople() {
+interface EmployesListPeople {
+  Name: string;
+  Salary: number;
+}
+
+function EmployesListPeople({ Name, Salary }: EmployesListPeople) {
   return (
-    <div>
-      <p>Рендер списка</p>
-    </div>
+    <>
+      <div className="EmployesList_wrapper">
+        <p className="EmployesList_Name">{Name}</p>
+        <p className="EmployesList_Salary">{Salary + "$"}</p>
+      </div>
+    </>
   );
 }
 
