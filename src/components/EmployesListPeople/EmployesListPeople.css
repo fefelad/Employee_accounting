@@ -18,3 +18,9 @@
   font-weight: 500;
   color: white;
 }
+
+.EmployesList_settings {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

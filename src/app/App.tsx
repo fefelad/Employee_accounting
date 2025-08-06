@@ -10,6 +10,11 @@ import { type Employes } from "../components/CreatEmployes/InterfaceEmployes";
 function App() {
   const [faundEmployes, SetFaundEmployes] = useState("");
   const [RenderEmployes, SetRenderEmployse] = useState<Employes[]>([]);
+  // const [employesDelete, SetEmployesDelete] = useState<Employes[]>([]);
+
+  const HadleDelete = (id: string) => {
+    SetRenderEmployse((emp) => emp.filter((emp) => emp.id !== id));
+  };
 
   useEffect(() => {
     console.log(RenderEmployes);
@@ -35,7 +40,10 @@ function App() {
         </div>
 
         <div className="Employes_list">
-          <EmployesList dataRenderList={RenderEmployes} />
+          <EmployesList
+            OnDeleteEmployes={HadleDelete}
+            dataRenderList={RenderEmployes}
+          />
         </div>
       </div>
     </>

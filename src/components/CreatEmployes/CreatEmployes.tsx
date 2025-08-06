@@ -4,6 +4,7 @@ import Input from "../../shared/ui/Input/Input";
 import "./CreatEmployes.css";
 import { type Employes } from "./InterfaceEmployes";
 import { type Dispatch, type SetStateAction } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface CreatEmployesProps {
   dataEmployesList: Dispatch<SetStateAction<Employes[]>>;
@@ -18,6 +19,7 @@ function CreatEmployes({ dataEmployesList }: CreatEmployesProps) {
     dataEmployesList((prev) => [
       ...prev,
       {
+        id: uuidv4(),
         ValueName: ValueName,
         ValueSalary: Number(ValueSalary),
         Premia: false,

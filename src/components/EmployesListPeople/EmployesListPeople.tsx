@@ -10,7 +10,9 @@ function EmployesListPeople({ Name, Salary }: EmployesListPeople) {
     <>
       <div className="EmployesList_wrapper">
         <p className="EmployesList_Name">{Name}</p>
-        <p className="EmployesList_Salary">{Salary + "$"}</p>
+        <div className="EmployesList_settings">
+          <p className="EmployesList_Salary">{Salary + "$"}</p>
+        </div>
       </div>
     </>
   );
