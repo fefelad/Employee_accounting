@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CreatEmployes from "../components/CreatEmployes/CreatEmployes";
 import EmployesList from "../components/EmpluesList/EmployesList";
 import Header from "../components/Header/Header";
@@ -9,8 +9,19 @@ import { type Employes } from "../components/CreatEmployes/InterfaceEmployes";
 
 function App() {
   const [faundEmployes, SetFaundEmployes] = useState("");
-  const [RenderEmployes, SetRenderEmployse] = useState<Employes[]>([]);
+  const [RenderEmployes, SetRenderEmployse] = useState<Employes[]>(() => {
+    const localStrogeEmployes = localStorage.getItem("employes");
+    return localStrogeEmployes ? JSON.parse(localStrogeEmployes) : [];
+  }); // я ебал такое
   const [activeFilter, setActiveFilter] = useState<"all" | "premia">("all");
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("employes", JSON.stringify(RenderEmployes));
+    } catch {
+      console.log("error");
+    }
+  }, [RenderEmployes]);
 
   const FilterEmployes = useMemo(() => {
     return activeFilter === "premia"
