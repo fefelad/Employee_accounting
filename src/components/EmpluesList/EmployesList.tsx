@@ -8,9 +8,14 @@ import Prize from "../../shared/ui/PrizeBtn/Prize";
 interface employeesList {
   dataRenderList: Employes[];
   OnDeleteEmployes: (id: string) => void;
+  onTogglePrize: (id: string) => void;
 }
 
-function EmployesList({ dataRenderList, OnDeleteEmployes }: employeesList) {
+function EmployesList({
+  dataRenderList,
+  OnDeleteEmployes,
+  onTogglePrize,
+}: employeesList) {
   return (
     <ul className="Employes_list_items">
       <div className="colom_name">
@@ -22,7 +27,10 @@ function EmployesList({ dataRenderList, OnDeleteEmployes }: employeesList) {
           <EmployesListPeople Name={emp.ValueName} Salary={emp.ValueSalary} />
           <div className="Settings_Btn">
             <DeleteBtn OnClick={() => OnDeleteEmployes(emp.id)} />
-            <Prize />
+            <Prize
+              isActive={emp.Premia}
+              OnClick={() => onTogglePrize(emp.id)}
+            />
           </div>
         </li>
       ))}

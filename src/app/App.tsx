@@ -10,10 +10,15 @@ import { type Employes } from "../components/CreatEmployes/InterfaceEmployes";
 function App() {
   const [faundEmployes, SetFaundEmployes] = useState("");
   const [RenderEmployes, SetRenderEmployse] = useState<Employes[]>([]);
-  // const [employesDelete, SetEmployesDelete] = useState<Employes[]>([]);
 
   const HadleDelete = (id: string) => {
     SetRenderEmployse((emp) => emp.filter((emp) => emp.id !== id));
+  };
+
+  const togglePremia = (id: string) => {
+    SetRenderEmployse((prev) =>
+      prev.map((emp) => (emp.id === id ? { ...emp, Premia: !emp.Premia } : emp))
+    );
   };
 
   useEffect(() => {
@@ -23,7 +28,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header />
+        <Header DataInfoEmplyes={RenderEmployes} />
         <div className="Creat_employes">
           <CreatEmployes dataEmployesList={SetRenderEmployse} />
         </div>
@@ -41,6 +46,7 @@ function App() {
 
         <div className="Employes_list">
           <EmployesList
+            onTogglePrize={togglePremia}
             OnDeleteEmployes={HadleDelete}
             dataRenderList={RenderEmployes}
           />

@@ -1,13 +1,15 @@
 import { memo } from "react";
 import "./Prize.css";
 
-import PrizeImg from "../../../assets/Prize.png";
-import { type BtnProps } from "../Btn/InterfaceBtn";
+interface PrizeProps {
+  OnClick: () => void;
+  isActive: boolean;
+}
 
-function Prize({ OnClick }: BtnProps) {
+function Prize({ OnClick, isActive }: PrizeProps) {
   return (
     <button onClick={OnClick} className="prizebtn">
-      <img className="prizeimg" src={PrizeImg} alt="prize" />
+      {isActive ? "★" : "☆"}
     </button>
   );
 }
