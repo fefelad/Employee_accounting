@@ -1,12 +1,24 @@
 import Btn from "../../shared/ui/Btn/Btn";
 import "./PeopleFilter.css";
 
-function PeopleFilter() {
+interface PeopleFilter {
+  onFilterChange: (type: "all" | "premia") => void;
+  currentFilter: "all" | "premia";
+}
+
+function PeopleFilter({ onFilterChange, currentFilter }: PeopleFilter) {
   return (
     <div className="people_filter_wrapper">
-      <Btn textBtn="Все сотрудники" />
-      <Btn textBtn="На повышение" />
-      <Btn textBtn="Фильтрация по ЗП" />
+      <Btn
+        active={currentFilter === "all"}
+        OnClick={() => onFilterChange("all")}
+        textBtn="Все сотрудники"
+      />
+      <Btn
+        active={currentFilter === "premia"}
+        OnClick={() => onFilterChange("premia")}
+        textBtn="На повышение"
+      />
     </div>
   );
 }

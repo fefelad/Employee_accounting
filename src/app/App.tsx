@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import CreatEmployes from "../components/CreatEmployes/CreatEmployes";
 import EmployesList from "../components/EmpluesList/EmployesList";
 import Header from "../components/Header/Header";
@@ -10,6 +10,19 @@ import { type Employes } from "../components/CreatEmployes/InterfaceEmployes";
 function App() {
   const [faundEmployes, SetFaundEmployes] = useState("");
   const [RenderEmployes, SetRenderEmployse] = useState<Employes[]>([]);
+  const [activeFilter, setActiveFilter] = useState<"all" | "premia">("all");
+
+  const FilterEmployes = useMemo(() => {
+    return activeFilter === "premia"
+      ? RenderEmployes.filter((emp) => emp.Premia)
+      : RenderEmployes;
+  }, [RenderEmployes, activeFilter]);
+
+  const SerchEmployes = useMemo(() => {
+    return FilterEmployes.filter((emp) =>
+      emp.ValueName.toLowerCase().includes(faundEmployes.toLowerCase())
+    );
+  }, [FilterEmployes, faundEmployes]);
 
   const HadleDelete = (id: string) => {
     SetRenderEmployse((emp) => emp.filter((emp) => emp.id !== id));
@@ -20,10 +33,6 @@ function App() {
       prev.map((emp) => (emp.id === id ? { ...emp, Premia: !emp.Premia } : emp))
     );
   };
-
-  useEffect(() => {
-    console.log(RenderEmployes);
-  }, [RenderEmployes]);
 
   return (
     <>
@@ -39,7 +48,10 @@ function App() {
             OnChange={SetFaundEmployes}
             placeholderText="Найти сотрудника"
           />
-          <PeopleFilter />
+          <PeopleFilter
+            onFilterChange={setActiveFilter}
+            currentFilter={activeFilter}
+          />
 
           <div className="List"></div>
         </div>
@@ -48,7 +60,7 @@ function App() {
           <EmployesList
             onTogglePrize={togglePremia}
             OnDeleteEmployes={HadleDelete}
-            dataRenderList={RenderEmployes}
+            dataRenderList={SerchEmployes}
           />
         </div>
       </div>
